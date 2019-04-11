@@ -1,7 +1,7 @@
 This is the script collection for quality control and merging/scaffolding of genome assemblies using 10X Chromium linked reads used in the Marasmius mutation paper. For the development version of this pipeline, please see https://github.com/markhilt/AnVIL
 
-![alt text](https://raw.githubusercontent.com/markhilt/Marasmius_mutation_paper/blob/master/genome_assembly/Marasmius_assembly_pipeline.png)
-Full 
+![alt text](https://github.com/johannessonlab/Marasmius_mutation_paper/blob/master/genome_assembly/Marasmius_assembly_pipeline.png)
+**Genome assembly pipeline developed for Marasmius oreades.** A. PacBio and Nanopore reads were assembled using [Canu v1.7](https://github.com/marbl/canu). To this initial assembly, 10X Chromium linked reads were mapped with [Longranger align](https://github.com/10XGenomics/longranger) and the assembly was polished with [Pilon](https://github.com/broadinstitute/pilon), before remapping of linked reads. B. [TigMint](https://github.com/bcgsc/tigmint) was used to create a bed file of inferred molecule spans of linked reads. The script convert_mol_cov.py was used to interpret this bed file. Probable misassemblies were broken manually within [Geneious](https://www.geneious.com/), and linked reads were remapped. C. We developed the script merge.py to infer linkage of contigs based on linked reads. This script was used in two iterations, with additional manual curation within Geneious and a final round of [Pilon](https://github.com/broadinstitute/pilon) polishing to obtain the final assembly. Raw sequencing reads are available at the Sequencing Read Archive under bioproject PRJNA525964 (https://www.ncbi.nlm.nih.gov/bioproject/PRJNA525964/).
 
 ## Dependencies
 - Python3
@@ -9,7 +9,7 @@ Full
 - [Mummer](https://github.com/mummer4/mummer) (optional)
 
 ## Description
-**AnVIL** contains the workhorse scripts **chromQC** and **merge**. 
+Contains the workhorse scripts **chromQC** and **merge**. 
 
 chromQC is used for validation of a genome assembly. It works by taking a sliding window approach, where it collects the GEM barcodes in every window across the genome and compares them to every other window. Misassemblies can thus be spotted. 
 
