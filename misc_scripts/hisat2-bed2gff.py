@@ -1,15 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# hisat2-bed2gff.py
-# Version 0.1
-# Author: Markus Hiltunen
-# E-mail: markus.hiltunen@ebc.uu.se
-#
-# This script converts the bed file produced by hisat2 with the option
-# --novel-splicesite-outfile to a gff format compatible with e.g. GeneMark-ET.
-#
-# LICENSING
+"""
+hisat2-bed2gff.py
+Version 0.1
+Author: Markus Hiltunen
+E-mail: markus.hiltunen@ebc.uu.se
+
+This script converts the bed file produced by hisat2 with the option
+--novel-splicesite-outfile to a gff format compatible with e.g. GeneMark-ET.
+
+LICENSING
+"""
+
 
 import argparse
 parser = argparse.ArgumentParser(description="Converter of bed file produced by \
