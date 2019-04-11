@@ -1,9 +1,7 @@
-# AnVIL
-## Assembly Validation and Improvement using Linked reads
-
 This is the script collection for quality control and merging/scaffolding of genome assemblies using 10X Chromium linked reads used in the Marasmius mutation paper. For the development version of this pipeline, please see https://github.com/markhilt/AnVIL
 
-
+![alt text](https://raw.githubusercontent.com/markhilt/Marasmius_mutation_paper/blob/master/genome_assembly/Marasmius_assembly_pipeline.png)
+Full 
 
 ## Dependencies
 - Python3
