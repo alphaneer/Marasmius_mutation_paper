@@ -1,3 +1,15 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+.. module:: graph_building
+    :synopsis: graph_building contains functions to create a graph from
+    linkage information during the merge.py pipeline.
+
+Copyright (c) 2019, Johannesson lab
+Licensed under the GPL3 license. See LICENSE file.
+"""
+
 import mummerTools as mt
 import nuclseqTools as nt
 

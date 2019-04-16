@@ -1,3 +1,16 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+.. module:: formatting_tools
+    :synopsis: formatting_tools contains functions to reformat python
+    objects to strings for output during the merge.py pipeline.
+
+Copyright (c) 2019, Johannesson lab
+Licensed under the GPL3 license. See LICENSE file.
+"""
+
+
 def formatTable(dict1):
     '''
     To format a 2-dimensional dictionary to a human readable table

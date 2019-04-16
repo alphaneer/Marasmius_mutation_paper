@@ -1,3 +1,15 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+.. module:: mummerTools
+    :synopsis: mummerTools contains functions to align sequences and parse delta
+    output by mummer during the merge.py pipeline.
+
+Copyright (c) 2019, Johannesson lab
+Licensed under the GPL3 license. See LICENSE file.
+"""
+
 from subprocess import call
 
 def align(seq1,seq2):

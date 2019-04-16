@@ -1,22 +1,25 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# call_mutations.py
-# Version 0.1
-# Author: Markus Hiltunen
-# E-mail: markus.hiltunen@ebc.uu.se
-#
-# This script was used in the Marasmius mutation paper to filter out
-# possible mutations from other variants in a variant table produced by
-# GATK variantsToTable. The principle is to look for variants that are present
-# in a subset of sampling points in a given fairy ring, e.g. present in
-# sample 01N but absent in 01E, 01S, etc.
-# Variants that conform to this principle are further filtered, as there will be
-# LOTS of false positives otherwise to look through manually in e.g. IGV.
-# Filtering is done in two steps: coverage (options -n and -x for minimum and
-# maximum respectively) and read frequency (option f).
-#
-# LICENSING
+"""
+call_mutations.py
+Version 0.1
+Author: Markus Hiltunen
+E-mail: markus.hiltunen@ebc.uu.se
+
+This script was used in the Marasmius mutation paper to filter out
+possible mutations from other variants in a variant table produced by
+GATK variantsToTable. The principle is to look for variants that are present
+in a subset of sampling points in a given fairy ring, e.g. present in
+sample 01N but absent in 01E, 01S, etc.
+Variants that conform to this principle are further filtered, as there will be
+LOTS of false positives otherwise to look through manually in e.g. IGV.
+Filtering is done in two steps: coverage (options -n and -x for minimum and
+maximum respectively) and read frequency (option f).
+
+Copyright (c) 2019, Johannesson lab
+Licensed under the MIT license. See LICENSE file.
+"""
 
 from operator import truediv # To be able to divide lists
 from scipy import stats as ss
@@ -129,8 +132,8 @@ def main():
                 # Look for homozygous sites
                 if 1.0 in variant_frequencies or 0.0 in variant_frequencies:
                     counter = 0
-                    homoz_checker, heteroz_checker, minor_allele_checker, freq_checker = \
-                    False, False, False, False
+                    homoz_checker, heteroz_checker = False, False
+                    minor_allele_checker, freq_checker = False, False
                     totcov = 0
                     tot_ref, tot_alt = 0, 0
 

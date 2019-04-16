@@ -1,3 +1,15 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+.. module:: nuclseqTools
+    :synopsis: nuclseqTools contains functions to manipulate nucleotide strings
+    during the merge.py pipeline.
+
+Copyright (c) 2019, Johannesson lab
+Licensed under the GPL3 license. See LICENSE file.
+"""
+
 def reverse_complement(nuclstring):
     rev_comped = ""
     for l in reversed(nuclstring):

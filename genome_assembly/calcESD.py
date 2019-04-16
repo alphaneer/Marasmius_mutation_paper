@@ -1,3 +1,15 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+.. module:: calcESD
+    :synopsis: calcESD contains functions to calculate outliers of
+    fractions of shared barcodes during the merge.py pipeline.
+
+Copyright (c) 2019, Johannesson lab
+Licensed under the GPL3 license. See LICENSE file.
+"""
+
 import numpy as np
 from scipy.stats import t
 

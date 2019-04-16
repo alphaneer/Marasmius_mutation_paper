@@ -1,6 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+merge.py
+Version 0.1
+Author: Markus Hiltunen
+E-mail: markus.hiltunen@ebc.uu.se
+
+This script was used in the Marasmius mutation paper to identify possible
+misassemblies during genome assembly. It makes use of mapped 10X Chromium linked
+reads and looks for regions that share a higher percentage of Chromium barcodes
+to a seemingly unrelated region than they share with their adjacent regions.
+
+Copyright (c) 2019, Johannesson lab
+Licensed under the GPL3 license. See LICENSE file.
+"""
+
 import numpy as np
 import pysam
 import calcESD
@@ -11,14 +26,36 @@ parser = argparse.ArgumentParser(description="Reads through a bam file produced 
                                             longranger align to collect GEM barcodes \
                                             in sliding windows of a genome. \
                                             Then compares barcodes of every window \
-                                            to all other windows to detect possible misassemblies.")
+                                            to all other windows to detect possible \
+                                            misassemblies.")
 
-parser.add_argument("input_bam", help="Input bam file. Required.", type = str)
-parser.add_argument("-w","--windowsize", help="Size of sliding windows. [10000]", default = 10000, type = int)
-parser.add_argument("-s","--stepsize", help="Step size of where to start new window. [9000]", default = 9000, type = int)
-parser.add_argument("-q","--mapq", help="Mapping quality cutoff value. [60]", default = 60, type = int)
-parser.add_argument("-m","--expected_molecule_size", help="Expected mean molecule size that went into Chromium sequencing (bp). [45000]", default = 45000, type = int)
-parser.add_argument("-o","--output", help="Prefix for output files.", type = str)
+parser.add_argument("input_bam", \
+                    help="Input bam file. Required.", \
+                    type = str)
+parser.add_argument("-w", \
+                    "--windowsize", \
+                    help="Size of sliding windows. [10000]", \
+                    default = 10000, \
+                    type = int)
+parser.add_argument("-s", \
+                    "--stepsize", \
+                    help="Step size of where to start new window. [9000]", \
+                    default = 9000, \
+                    type = int)
+parser.add_argument("-q", \
+                    "--mapq", \
+                    help="Mapping quality cutoff value. [60]", \
+                    default = 60, \
+                    type = int)
+parser.add_argument("-m", \
+                    "--expected_molecule_size", \
+                    help="Expected mean molecule size that went into Chromium sequencing (bp). [45000]", \
+                    default = 45000, \
+                    type = int)
+parser.add_argument("-o", \
+                    "--output", \
+                    help="Prefix for output files.", \
+                    type = str)
 args = parser.parse_args()
 
 def getOut():

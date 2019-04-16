@@ -1,20 +1,23 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# analyze_coding_SNPs.py
-# Version 0.1
-# Author: Markus Hiltunen
-# E-mail: markus.hiltunen@ebc.uu.se
-#
-# This script was used in the Marasmius mutation paper to investigate
-# the presence of SNPs in coding regions, and to calculate the dN/dS ratio.
-# In short, it reads a vcf and collects single nucleotide variants,
-# compares these to coding regions in a gff file and predicts amino acid
-# changes. Also requires the genome in a fasta file to get initial gene
-# sequences from. The genes in the gff file have to have entries for both gene
-# and CDS (e.g. maker output).
-#
-# LICENSING
+"""
+analyze_coding_SNPs.py
+Version 0.1
+Author: Markus Hiltunen
+E-mail: markus.hiltunen@ebc.uu.se
+
+This script was used in the Marasmius mutation paper to investigate
+the presence of SNPs in coding regions, and to calculate the dN/dS ratio.
+In short, it reads a vcf and collects single nucleotide variants,
+compares these to coding regions in a gff file and predicts amino acid
+changes. Also requires the genome in a fasta file to get initial gene
+sequences from. The genes in the gff file have to have entries for both gene
+and CDS (e.g. maker output).
+
+Copyright (c) 2019, Johannesson lab
+Licensed under the MIT license. See LICENSE file.
+"""
 
 import argparse
 import numpy as np

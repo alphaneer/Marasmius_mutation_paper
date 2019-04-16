@@ -1,19 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# genomic_mutation_distribution_chi2.py
-# Version 0.1
-# Author: Markus Hiltunen
-# E-mail: markus.hiltunen@ebc.uu.se
-#
-# This script was used in the Marasmius mutation paper to investigate
-# the genomic distribution of mutations. It divides the genome into bins
-# of size -b, sums of the number of mutations in each bin, and
-# compares all bins to each other with a chi2 test.
-# Also capable of producing a simple plot (not used in the paper).
-#
-# LICENSING
+"""
+genomic_mutation_distribution_chi2.py
+Version 0.1
+Author: Markus Hiltunen
+E-mail: markus.hiltunen@ebc.uu.se
 
+This script was used in the Marasmius mutation paper to investigate
+the genomic distribution of mutations. It divides the genome into bins
+of size -b, sums of the number of mutations in each bin, and
+compares all bins to each other with a chi2 test.
+Also capable of producing a simple plot (not used in the paper).
+
+Copyright (c) 2019, Johannesson lab
+Licensed under the MIT license. See LICENSE file.
+"""
 
 import argparse
 from scipy.stats import chisquare

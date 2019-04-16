@@ -1,6 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+merge.py
+Version 0.1
+Author: Markus Hiltunen
+E-mail: markus.hiltunen@ebc.uu.se
+
+This script converts the bed file produced by hisat2 with the option
+--novel-splicesite-outfile to a gff format compatible with e.g. GeneMark-ET.
+
+Copyright (c) 2019, Johannesson lab
+Licensed under the GPL3 license. See LICENSE file.
+"""
+
 import argparse
 import numpy as np
 import time
@@ -17,14 +30,41 @@ import graph_building as gb
 import nuclseqTools as nt
 import mummerTools as mt
 
-parser = argparse.ArgumentParser(description="Reads a bam file, creates links between contigs based on linked read information, and outputs a .gfa.")
-parser.add_argument("input_bam", help="Input bam file. Required.", type = str)
-parser.add_argument("-i", "--input_fasta", help="Input fasta file for contig merging. Optional. If not specified, will only output linkage .gfa and .gv for manual merging.", type = str)
-parser.add_argument("-s","--region_size", help="Size of region of contig start and end to collect barcodes from. [20000]", default = 20000, type = int)
-parser.add_argument("-n","--barcode_number", help="Minimum number of shared barcodes to create link. [1]", default = 1, type = int)
-parser.add_argument("-f","--barcode_fraction", help="Minimum fraction of shared barcodes to create link. [0.01]", default = 0.01, type = float)
-parser.add_argument("-q","--mapq", help="Mapping quality cutoff value. [60]", default = 60, type = int)
-parser.add_argument("-o","--output", help="Prefix for output files.", type = str)
+parser = argparse.ArgumentParser(description="Reads a bam file, creates links \
+                                            between contigs based on linked read \
+                                            information, and outputs a .gfa.")
+parser.add_argument("input_bam", \
+                    help="Input bam file. Required.", \
+                    type = str)
+parser.add_argument("-i", \
+                    "--input_fasta", \
+                    help="Input fasta file for contig merging. Optional. If not \
+                    specified, will only output linkage .gfa and .gv for manual merging.", \
+                    type = str)
+parser.add_argument("-s", \
+                    "--region_size", \
+                    help="Size of region of contig start and end to collect barcodes from. [20000]", \
+                    default = 20000, \
+                    type = int)
+parser.add_argument("-n", \
+                    "--barcode_number", \
+                    help="Minimum number of shared barcodes to create link. [1]", \
+                    default = 1, \
+                    type = int)
+parser.add_argument("-f", \
+                    "--barcode_fraction", \
+                    help="Minimum fraction of shared barcodes to create link. [0.01]", \
+                    default = 0.01, \
+                    type = float)
+parser.add_argument("-q", \
+                    "--mapq", \
+                    help="Mapping quality cutoff value. [60]", \
+                    default = 60, \
+                    type = int)
+parser.add_argument("-o", \
+                    "--output", \
+                    help="Prefix for output files.", \
+                    type = str)
 args = parser.parse_args()
 
 def getGEMs(reads):

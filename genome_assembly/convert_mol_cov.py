@@ -10,7 +10,8 @@ E-mail: markus.hiltunen@ebc.uu.se
 This script reads a bed file as output by tigmint to sum of the molecule
 coverage per base pair.
 
-LICENSING
+Copyright (c) 2019, Johannesson lab
+Licensed under the MIT license. See LICENSE file.
 """
 
 

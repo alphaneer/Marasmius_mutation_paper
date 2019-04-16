@@ -10,7 +10,8 @@ E-mail: markus.hiltunen@ebc.uu.se
 This script converts the bed file produced by hisat2 with the option
 --novel-splicesite-outfile to a gff format compatible with e.g. GeneMark-ET.
 
-LICENSING
+Copyright (c) 2019, Johannesson lab
+Licensed under the MIT license. See LICENSE file.
 """
 
 

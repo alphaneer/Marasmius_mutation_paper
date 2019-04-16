@@ -1,26 +1,48 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# variant_location_simulator.py
-# Version 0.1
-# Author: Markus Hiltunen
-# E-mail: markus.hiltunen@ebc.uu.se
-#
-# This script randomizes genomic locations for BAMsurgeon to simulate variants
-# at.
-#
-# LICENSING
+"""
+variant_location_simulator.py
+Version 0.1
+Author: Markus Hiltunen
+E-mail: markus.hiltunen@ebc.uu.se
+
+This script randomizes genomic locations for BAMsurgeon to simulate variants
+at.
+
+Copyright (c) 2019, Johannesson lab
+Licensed under the MIT license. See LICENSE file.
+"""
 
 import argparse
 import random
 import pysam
 
-parser = argparse.ArgumentParser(description="Takes a reference genome and simulates SNV positions in a bed output.")
-parser.add_argument("-r", "--reference", help="Fasta genome file. Required.", type = str)
-parser.add_argument("-d", "--variant_density", help="Simulate an SNV on average every nth bp [100000]", default = 100000, type = int)
-parser.add_argument("-o", "--out", help="Prefix for output.", type = str)
-parser.add_argument("-i","--indels", help="Add to produce indels instead of SNPs.", action='store_true')
-parser.add_argument("-f", "--indelrate", help="Insertion/deletion ratio [0.33]", default = 0.33, type = float)
+parser = argparse.ArgumentParser(description="Takes a reference genome and \
+                                            simulates SNV positions in a bed \
+                                            output.")
+parser.add_argument("-r", \
+                    "--reference", \
+                    help="Fasta genome file. Required.", \
+                    type = str)
+parser.add_argument("-d", \
+                    "--variant_density", \
+                    help="Simulate an SNV on average every nth bp [100000]", \
+                    default = 100000, \
+                    type = int)
+parser.add_argument("-o", \
+                    "--out", \
+                    help="Prefix for output.", \
+                    type = str)
+parser.add_argument("-i", \
+                    "--indels", \
+                    help="Add to produce indels instead of SNPs.", \
+                    action='store_true')
+parser.add_argument("-f", \
+                    "--indelrate", \
+                    help="Insertion/deletion ratio [0.33]", \
+                    default = 0.33, \
+                    type = float)
 args = parser.parse_args()
 
 def simindels(nuclstr, positions):
